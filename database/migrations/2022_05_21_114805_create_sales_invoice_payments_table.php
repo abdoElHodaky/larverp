@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('sales_invoice_id')->constrained('sales_invoices')->onDelete('cascade');
             $table->string('deposit_payment_method')->default('cash')->nullable();
-            $table->mediumText('payment_amount')->nullable()->default('0.00');
+            $table->string('payment_amount')->nullable()->default('0.00');
             $table->date('payment_date')->nullable();
             $table->string('payment_status')->default('completed')->nullable();
             $table->foreignId('collected_by_id')->constrained('users')->onDelete('cascade');
             $table->bigInteger('transaction_id')->nullable();
-            $table->text('receipt_notes')->nullable();
+            $table->string('receipt_notes')->nullable();
             $table->timestamps();
         });
     }
