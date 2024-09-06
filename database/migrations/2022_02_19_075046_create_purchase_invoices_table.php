@@ -27,7 +27,7 @@ class CreatePurchaseInvoicesTable extends Migration
             $table->string('subtotal')->default('0.00');
             $table->decimal('discount', 8, 2)->default(0.00)->nullable();
             $table->integer('discount_type')->default(1)->nullable()->comment('1 for percentage 0 for cash amount');
-            $table->text('discount_inv')->default('0.00')->nullable();
+            $table->string('discount_inv')->default('0.00')->nullable();
 
             $table->unsignedBigInteger('warehouse_id')->nullable();
             $table->foreign('warehouse_id')->references('id')->on('warehouses')->onUpdate('cascade');
