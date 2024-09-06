@@ -25,6 +25,6 @@ RUN npm install && composer install
 #RUN php artisan db:wipe --drop-types --force 
 #RUN php artisan migrate:install
 RUN export APP_KEY=$( php artisan:key generate --show )
-RUN php artisan migrate --force
+RUN php artisan migrate:refresh --force
 RUN php artisan db:seed --force
 EXPOSE 80 81
