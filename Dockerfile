@@ -8,7 +8,7 @@ ENV RUN_SCRIPTS 1
 ENV REAL_IP_HEADER 1
 
 # Laravel config
-#ENV APP_KEY base64:B6l/H5fSpR60Y+MpcKP22Z1B4Us7adD+jJrln8XOcpQ=
+ENV APP_KEY base64:B6l/H5fSpR60Y+MpcKP22Z1B4Us7adD+jJrln8XOcpQ=
 ENV APP_ENV production
 ENV APP_DEBUG true
 ENV LOG_CHANNEL stderr
@@ -24,7 +24,7 @@ RUN chmod 777 ./*
 RUN npm install && composer install
 #RUN php artisan db:wipe --drop-types --force 
 #RUN php artisan migrate:install
-RUN export APP_KEY=$( php artisan:key generate --show )
+#RUN export APP_KEY=$( php artisan:key generate --show )
 RUN php artisan migrate:fresh --force
 RUN php artisan db:seed --force
 EXPOSE 80 81
