@@ -16,8 +16,8 @@ class CreatePurchaseInvoiceTaxesTable extends Migration
         Schema::create('purchase_invoice_taxes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('purchase_invoice_id')->constrained('purchase_invoices')->onDelete('cascade');
-            $table->mediumText('total_tax_inv')->default('0.00');
-            $table->mediumText('total_tax_inv_sum')->default('0.00');
+            $table->string('total_tax_inv')->default('0.00');
+            $table->string('total_tax_inv_sum')->default('0.00');
             $table->timestamps();
         });
     }
