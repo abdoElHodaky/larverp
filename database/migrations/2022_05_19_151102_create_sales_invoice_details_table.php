@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreign('first_tax_id')->references('id')->on('taxes')->onUpdate('cascade');
             $table->unsignedBigInteger('second_tax_id')->nullable();
             $table->foreign('second_tax_id')->references('id')->on('taxes')->onUpdate('cascade');
-            $table->mediumText('row_total')->default(0.00);
+            $table->string('row_total')->default("0.00");
             $table->timestamps();
         });
     }
