@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('sales_invoice_taxes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('sales_invoice_id')->constrained('sales_invoices')->onDelete('cascade');
-            $table->mediumText('total_tax_inv')->default('0.00');
-            $table->mediumText('total_tax_inv_sum')->default('0.00');
+            $table->string('total_tax_inv')->default('0.00');
+            $table->string('total_tax_inv_sum')->default('0.00');
             $table->timestamps();
         });
     }
