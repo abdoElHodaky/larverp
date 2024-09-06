@@ -17,7 +17,7 @@ class CreatePurchaseInvoicePaymentsTable extends Migration
             $table->id();
             $table->foreignId('purchase_invoice_id')->constrained('purchase_invoices')->onDelete('cascade');
             $table->string('deposit_payment_method')->default('cash')->nullable();
-            $table->mediumText('payment_amount')->nullable()->default('0.00');
+            $table->string('payment_amount')->nullable()->default('0.00');
             $table->date('payment_date')->nullable();
             $table->string('payment_status')->default('completed')->nullable();
             $table->foreignId('collected_by_id')->constrained('users')->onDelete('cascade');
