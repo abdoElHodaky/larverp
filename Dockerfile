@@ -27,4 +27,4 @@ RUN npm install && composer install
 #RUN export APP_KEY=$( php artisan:key generate --show )
 #RUN php artisan migrate:fresh --force
 #RUN php artisan db:seed --force
-EXPOSE 80 81
+EXPOSE 8081
