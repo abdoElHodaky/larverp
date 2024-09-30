@@ -15,8 +15,6 @@
 
     @include('layouts.admin.partials.styles')
     
-     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-     <script>eruda.init();</script>
 </head>
 <!-- END: Head-->
 
