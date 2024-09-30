@@ -14,7 +14,12 @@ require('laravel-mix-workbox');
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
-    ]).generateSW(
+    ]).combine([
+        "public/app-assets/**/*.css",
+   ],"public/app_assets.css")
+    .combine(["public/app-assets/**/*.js"],
+             "public/app_assets.css").
+    generateSW(
     {
     mode:"development",
 	directoryIndex: 'public/',
