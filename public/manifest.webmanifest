@@ -1,6 +1,15 @@
 {
- 
-  
+  "name": "LaravelERP",
+  "short_name": "LERP",
+  "start_url": "/index.php",
+  "scope": "/",
+  "id": "LRVHRMS-H5fSpR60Y",
+  "background_color": "#6777ef",
+  "description": "Tutorial of Laravel Package",
+  "display": "fullscreen",
+  "dir": "auto",
+  "orientation": "natural",
+  "theme_color": "#6777ef",
   "icons": [
     {
       "src": "android/android-launchericon-512-512.png",
