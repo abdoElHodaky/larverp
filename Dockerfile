@@ -21,8 +21,7 @@ ENV NPM_ALLOW_SUPERUSER 1
 ENV YARN_ALLOW_SUPERUSER 1
 ENV NPX_ALLOW_SUPERUSER 1
 RUN chmod 777 ./*
-RUN composer install npm install && \
-npm run prod
+RUN composer install npm install
 #RUN php artisan db:wipe --drop-types --force 
 #RUN php artisan migrate:install
 #RUN export APP_KEY=$( php artisan:key generate --show )
