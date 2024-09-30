@@ -19,7 +19,7 @@
     <!-- END: Page JS-->
 
     <!-- BEGIN: Custom js-->
-    <script src="{{asset('/js/app.js')}}"></script>
+    <script type="module" src="/js/app.js"></script>
     <script src="{{asset('assets')}}/js/scripts.js"></script>
     <script src="{{asset('assets/js/custome_livewire.js')}}"></script>
     <!-- END: Custom js-->
