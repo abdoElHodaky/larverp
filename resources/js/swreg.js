@@ -43,7 +43,7 @@ setTimeout(()=>{
   } else {
      console.error("Service workers are not supported.");
   }
-
+}
     window.addEventListener("beforeinstallprompt", (e) => {
         // Prevent the mini-infobar from appearing on mobile
         e.preventDefault();
@@ -91,4 +91,4 @@ setTimeout(()=>{
         elem.parentNode.removeChild(elem);
     }
 
-}
+
