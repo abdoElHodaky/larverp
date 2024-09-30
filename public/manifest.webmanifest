@@ -26,5 +26,18 @@
       "src": "android/android-launchericon-48-48.png",
       "sizes": "48x48"
     }
-  ]
+  ],
+"display_override": [
+    "fullscreen",
+    "minimal-ui",
+    "window-controls-overlay",
+    "standalone",
+    "browser"
+  ],
+  "edge_side_panel": {
+    "preferred_width": 100
+  },
+    "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+    }
 }
