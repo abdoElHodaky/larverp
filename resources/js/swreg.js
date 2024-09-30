@@ -1,6 +1,6 @@
 
 //import {Workbox} from "workbox-window";
-exports = registerSW=()=>{
+module.exports =()=>{
 if ("serviceWorker" in navigator) { 
     const  {Workbox}=require("workbox-window");
     const wb = new Workbox('/sw.js');
