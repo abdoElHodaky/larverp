@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
      <link rel="manifest" href="{{asset('/manifest.wemanifest')}}"/>
     @include('layouts.admin.partials.styles')
-    <script async src="{{ mix('/mix-manifest.js') }}"></script>
     <script async src="{{ mix('js/app.js') }}"></script>
 </head>
 <!-- END: Head-->
