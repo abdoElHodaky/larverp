@@ -10,9 +10,21 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@popperjs/core": "^2.11.8",
         "axios": "^0.25",
+        "boostrap": "^2.0.0",
+        "browser-sync": "^3.0.3",
+        "browser-sync-webpack-plugin": "^2.3.0",
         "laravel-mix": "^6.0.6",
+        "laravel-mix-workbox": "^0.1.4",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "workbox-webpack-plugin": "^7.1.0"
+    },
+    "dependencies": {
+        "bootstrap": "^5.3.3",
+        "jquery": "^3.7.1",
+        "popper.js": "^1.16.1",
+        "workbox-window": "^7.1.0"
     }
 }
