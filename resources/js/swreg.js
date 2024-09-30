@@ -1,4 +1,6 @@
+
 //import {Workbox} from "workbox-window";
+exports = registerSW=()=>{
 if ("serviceWorker" in navigator) { 
     const  {Workbox}=require("workbox-window");
     const wb = new Workbox('/sw.js');
@@ -88,3 +90,5 @@ setTimeout(()=>{
         var elem = document.getElementById('install-button');
         elem.parentNode.removeChild(elem);
     }
+
+}
