@@ -15,12 +15,7 @@ require('laravel-mix-compress');
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
-    ]).combine([
-        "public/app-assets/**/*.css",
-   ],"public/app_assets.css")
-    .combine([
-        "public/app-assets/**/*.js"
-    ],"public/app_assets.js")
+    ])
     .js("public/app_assets.js","public/app_assetsc.js").compress({
         productionOnly: false,
         minRatio: 1
