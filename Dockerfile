@@ -29,4 +29,4 @@ RUN npm run prod
 #RUN export APP_KEY=$( php artisan:key generate --show )
 #RUN php artisan migrate:fresh --force
 #RUN php artisan db:seed --force
-EXPOSE 8081
+EXPOSE 82
