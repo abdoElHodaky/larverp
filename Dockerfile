@@ -21,7 +21,8 @@ ENV NPM_ALLOW_SUPERUSER 1
 ENV YARN_ALLOW_SUPERUSER 1
 ENV NPX_ALLOW_SUPERUSER 1
 RUN chmod 777 ./*
-RUN composer install
+RUN composer install && npm install && \
+php artisan vendor:publish --tag=laravel-assets --ansi --force
 #RUN php artisan db:wipe --drop-types --force 
 #RUN php artisan migrate:install
 #RUN export APP_KEY=$( php artisan:key generate --show )
