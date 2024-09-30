@@ -26,8 +26,9 @@
     <!--BEGIN: CDNs-->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!--END: CDNs-->
-
-
+     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+     <script>eruda.init();</script>
+    
     @stack('scripts')
 
     @livewireScripts
