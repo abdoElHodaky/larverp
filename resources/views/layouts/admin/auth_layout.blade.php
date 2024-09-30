@@ -14,7 +14,9 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
 
     @include('layouts.admin.partials.styles')
-
+    
+     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+     <script>eruda.init();</script>
 </head>
 <!-- END: Head-->
 
