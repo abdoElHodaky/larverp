@@ -1,6 +1,6 @@
 const mix = require('laravel-mix');
 require('laravel-mix-workbox');
-require('laravel-mix-compress');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -15,15 +15,7 @@ require('laravel-mix-compress');
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
-    ])
-    .js("public/app_assets.js","public/app_assetsc.js").compress({
-        productionOnly: false,
-        minRatio: 1
-    })
-    .css("public/app_assets.css","public/app_assetsc.css").compress({
-        productionOnly: false,
-        minRatio: 1
-    }).
+    ]).
     generateSW(
     {
     mode:"development",
