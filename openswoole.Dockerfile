@@ -21,8 +21,8 @@ ENV NPX_ALLOW_SUPERUSER 1
 RUN chmod 777 ./*
 RUN composer install && composer require laravel/octane  &&\
 npm install && \
-yes | php artisan octane:install --server=openswool &&\
+yes | php artisan octane:install --server=swoole &&\
 php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
 
 
-CMD ["php artisan octane:start","--workers=4","--server=swool","--port=8080"]
+CMD ["php artisan octane:start","--workers=4","--server=swoole","--port=82"]
