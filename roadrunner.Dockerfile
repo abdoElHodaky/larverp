@@ -19,7 +19,7 @@ ENV NPM_ALLOW_SUPERUSER 1
 ENV YARN_ALLOW_SUPERUSER 1
 ENV NPX_ALLOW_SUPERUSER 1
 RUN chmod 777 ./*
-RUN composer update -D && composer require laravel/octane  &&\
+RUN composer update -W && composer require laravel/octane  &&\
 npm install && \
 yes | php artisan octane:install --server=roadrunner &&\
 php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
