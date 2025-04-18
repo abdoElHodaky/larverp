@@ -21,7 +21,7 @@ ENV NPX_ALLOW_SUPERUSER 1
 RUN chmod 777 ./*
 RUN composer install && composer require laravel/octane  &&\
 npm install && \
-yes | php artisan octane:install --server=roadrunner &&\
+ php artisan octane:install --server=roadrunner &&\
 php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
 
 
