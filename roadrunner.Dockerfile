@@ -11,18 +11,19 @@ ENV APP_ENV production
 ENV APP_DEBUG true
 ENV LOG_CHANNEL stderr
 ENV APP_URL 0.0.0.0
-
+ENV ROADRUNNER_PORT 8000
 # Allow composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV NODEJS_ALLOW_SUPERUSER 1
 ENV NPM_ALLOW_SUPERUSER 1
 ENV YARN_ALLOW_SUPERUSER 1
 ENV NPX_ALLOW_SUPERUSER 1
+
 RUN chmod 777 ./*
 RUN composer install && composer require laravel/octane  &&\
 npm install && \
 yes | php artisan octane:install --server=roadrunner &&\
 php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
 
-EXPOSE 82 8000
+EXPOSE ${ROADRUNNER_PORT} 82
 CMD ["php artisan octane:start --port=8000 --workers=4"]
