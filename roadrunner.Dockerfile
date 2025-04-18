@@ -25,4 +25,4 @@ yes | php artisan octane:install --server=roadrunner &&\
 php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
 
 EXPOSE 82 8000
-CMD ["php artisan octane","--workers=4","--port=82"]
+CMD ["php artisan octane:start --port=8000 --workers=4"]
