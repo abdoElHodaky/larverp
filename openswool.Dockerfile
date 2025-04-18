@@ -22,7 +22,7 @@ ENV OCTANE_SERVER roadrunner
 #echo 'pm.max_requests = 500' >> /usr/local/etc/php-fpm.d/zz-docker.conf
 RUN chmod -R 777 . && composer install &&\
 composer require laravel/octane && npm install workbox-window --save
-RUN yes | php artisan octane:install --server=roadrunner
+RUN yes | php artisan octane:install --server=swool
 RUN npm run build && php artisan storage:link
 
-CMD ["php artisan octane:start","--workers=4","--server=roadrunner","--port=8080"]
+CMD ["php artisan octane:start","--workers=4","--server=swool","--port=8080"]
