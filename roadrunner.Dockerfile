@@ -1,7 +1,7 @@
-FROM openswoole/swoole:22.1.2-php8.1-alpine
+FROM spacetabio/roadrunner-alpine:8.1-base-1.11.0
 RUN apk add -U --no-cache nghttp2-dev nodejs npm unzip tzdata
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
-RUN docker-php-ext-enable gd
+RUN docker-php-ext-install bcmath 
 COPY . /var/www/html
 WORKDIR /var/www/html
 
@@ -21,8 +21,8 @@ ENV NPX_ALLOW_SUPERUSER 1
 RUN chmod 777 ./*
 RUN composer update -D && composer require laravel/octane  &&\
 npm install && \
-yes | php artisan octane:install --server=swoole &&\
+yes | php artisan octane:install --server=roadrunner &&\
 php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
 
 
-CMD ["php artisan octane:start","--workers=4","--server=swoole","--port=82"]
+CMD ["php artisan octane:start","--workers=4","--server=roadrunner","--port=82"]
