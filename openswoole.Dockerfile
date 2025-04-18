@@ -1,4 +1,4 @@
-FROM openswoole/swoole:22.0.0-php8.0-alpine
+FROM openswoole/swoole:22.1.2-php8.1-alpine
 RUN apk add -U --no-cache nghttp2-dev nodejs npm unzip tzdata
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
