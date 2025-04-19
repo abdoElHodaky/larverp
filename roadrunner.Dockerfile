@@ -25,5 +25,5 @@ npm install && \
 yes | php artisan octane:install --server=roadrunner &&\
 php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
 
-EXPOSE ${ROADRUNNER_PORT} 82
+EXPOSE ${ROADRUNNER_PORT} 
 CMD ["php artisan octane:start --port=8000 --workers=4"]
