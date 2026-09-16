@@ -46,6 +46,9 @@
             "Tests\\": "tests/"
         }
     },
+    "replace": {
+    "symfony/polyfill-php72": "*"
+    },
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
