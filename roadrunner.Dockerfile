@@ -22,10 +22,12 @@ ENV NPX_ALLOW_SUPERUSER 1
 
 RUN chmod -R 777 . && composer install && npm i
 RUN composer require laravel/octane spiral/roadrunner-cli spiral/roadrunner-http spiral/roadrunner --no-interaction \
-    && php artisan octane:install --server=roadrunner --no-interaction \
     && ./vendor/bin/rr get-binary --quiet \
     && chmod +x rr \
-    && mv rr /usr/local/bin/rr
+    && mv rr /usr/local/bin/rr \ &&
+    php artisan octane:install --server=roadrunner --no-interaction \
+    && sed -i 's/version: "2.7"/version: "3.0"/g' .rr.yaml \
+    && sed -i 's/version: "2"/version: "3.0"/g' .rr.yaml
 
 
 RUN php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
