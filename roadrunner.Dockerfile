@@ -1,4 +1,5 @@
-FROM spacetabio/roadrunner-alpine:8.1-base-1.11.0
+#FROM spacetabio/roadrunner-alpine:8.1-base-1.11.0
+FROM shinsenter/roadrunner:php8.1-alpine
 RUN apk add -U --no-cache nghttp2-dev nodejs npm unzip tzdata
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 RUN docker-php-ext-install bcmath 
@@ -20,9 +21,9 @@ ENV YARN_ALLOW_SUPERUSER 1
 ENV NPX_ALLOW_SUPERUSER 1
 
 RUN chmod -R 777 . && composer install &&\
-composer require laravel/octane spiral/roadrunner-cli && npm install
+composer require laravel/octane  && npm install
 RUN yes | php artisan octane:install --server=roadrunner
-RUN ./vendor/bin/rr get-binary --quiet && chmod +x rr && mv rr /usr/local/bin/rr
+#RUN ./vendor/bin/rr get-binary --quiet && chmod +x rr && mv rr /usr/local/bin/rr
 RUN php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
 #RUN composer install && composer require laravel/octane  spiral/roadrunner-cli && npm install && yes | php artisan octane:install --server=roadrunner 
 #RUN ./vendor/bin/rr get-binary --quiet && chmod +x rr && mv rr /usr/local/bin/rr &&\
