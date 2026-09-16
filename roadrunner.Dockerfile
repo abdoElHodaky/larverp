@@ -25,4 +25,5 @@ RUN ./vendor/bin/rr get-binary --quiet && chmod +x rr && mv rr /usr/local/bin/rr
 php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
 
 EXPOSE ${ROADRUNNER_PORT} 
-CMD ["php artisan octane:start --port=8000 --workers=4"]
+ENTRYPOINT ["php", "artisan", "octane:start"]
+CMD ["--server=roadrunner", "--workers=5","--max-requests=1450","--host=0.0.0.0", "--port=8000"]
