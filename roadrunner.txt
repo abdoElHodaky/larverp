@@ -1,0 +1,57 @@
+# ============================================
+# STAGE 1: Build Dependencies & Assets
+# ============================================
+FROM spacetabio/roadrunner-alpine:8.1-base-1.11.0 AS builder
+
+RUN apk add -U --no-cache nghttp2-dev nodejs npm unzip tzdata
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+RUN docker-php-ext-install bcmath 
+
+COPY . /var/www/html
+WORKDIR /var/www/html
+
+# Allow composer to run as root
+ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV NODEJS_ALLOW_SUPERUSER 1
+ENV NPM_ALLOW_SUPERUSER 1
+ENV YARN_ALLOW_SUPERUSER 1
+ENV NPX_ALLOW_SUPERUSER 1
+
+RUN chmod -R 777 . && composer install && \
+    composer require laravel/octane spiral/roadrunner-cli && npm install
+RUN yes | php artisan octane:install --server=roadrunner
+RUN ./vendor/bin/rr get-binary --quiet && chmod +x rr && mv rr /usr/local/bin/rr
+RUN php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
+
+# ============================================
+# STAGE 2: Production Runtime
+# ============================================
+FROM spacetabio/roadrunner-alpine:8.1-base-1.11.0 AS runner
+
+# Install runtime dependencies
+RUN apk add -U --no-cache nghttp2-dev nodejs npm unzip tzdata
+RUN docker-php-ext-install bcmath 
+
+WORKDIR /var/www/html
+
+# Copy built application and binaries from the builder stage
+COPY --from=builder /var/www/html /var/www/html
+COPY --from=builder /usr/local/bin/rr /usr/local/bin/rr
+
+# Laravel config
+ENV APP_KEY base64:B6l/H5fSpR60Y+MpcKP22Z1B4Us7adD+jJrln8XOcpQ=
+ENV APP_ENV production
+ENV APP_DEBUG true
+ENV LOG_CHANNEL stderr
+ENV APP_URL 0.0.0.0
+ENV ROADRUNNER_PORT 8000
+
+ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV NODEJS_ALLOW_SUPERUSER 1
+ENV NPM_ALLOW_SUPERUSER 1
+ENV YARN_ALLOW_SUPERUSER 1
+ENV NPX_ALLOW_SUPERUSER 1
+
+EXPOSE ${ROADRUNNER_PORT} 
+ENTRYPOINT ["php", "artisan", "octane:start"]
+CMD ["--server=roadrunner", "--workers=5","--max-requests=1450","--host=0.0.0.0", "--port=8000"]
