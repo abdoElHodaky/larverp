@@ -21,7 +21,7 @@ ENV YARN_ALLOW_SUPERUSER 1
 ENV NPX_ALLOW_SUPERUSER 1
 
 RUN chmod -R 777 . && composer install && npm i
-RUN composer require laravel/octane spiral/roadrunner-cli spiral/roadrunner-http spiral/roadrunner --no-interaction \
+RUN composer require spiral/roadrunner-http:^3.0 spiral/roadrunner-cli:^3.0 laravel/octane:^2.0 --no-interaction \
     && php artisan octane:install --server=roadrunner --no-interaction \
     && ./vendor/bin/rr get-binary --quiet \
     && chmod +x rr \
