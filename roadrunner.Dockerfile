@@ -2,7 +2,7 @@
 FROM shinsenter/roadrunner:php8.1-alpine
 RUN apk add -U --no-cache nghttp2-dev nodejs npm unzip tzdata
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
-RUN docker-php-ext-install bcmath 
+#RUN docker-php-ext-install bcmath 
 COPY . /var/www/html
 WORKDIR /var/www/html
 
