@@ -28,5 +28,5 @@ RUN php artisan livewire:publish --assets && php artisan vendor:publish --tag=la
 #RUN ./vendor/bin/rr get-binary --quiet && chmod +x rr && mv rr /usr/local/bin/rr &&\
 
 EXPOSE ${ROADRUNNER_PORT} 
-ENTRYPOINT ["php", "artisan", "octane:start"]
-CMD ["--server=roadrunner", "--workers=5","--max-requests=1450","--host=0.0.0.0", "--port=8000"]
+#ENTRYPOINT ["php", "artisan", "octane:start"]
+#CMD ["--server=roadrunner", "--workers=5","--max-requests=1450","--host=0.0.0.0", "--port=8000"]
